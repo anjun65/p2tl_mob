@@ -42,10 +42,10 @@ class _MainPageState extends State<MainPage> {
             },
             children: [
               Center(
-                  // child: FoodPage(),
-                  ),
+                child: MapPage(),
+              ),
               Center(
-                  // child: OrderHistoryPage(),
+                  // child: Form1Page(),
                   ),
               Center(
                   // child: ProfilePage(),

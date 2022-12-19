@@ -84,6 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                       UserState state = context.bloc<UserCubit>().state;
 
                       if (state is UserLoaded) {
+                        context.bloc<WorkCubit>().getWorks();
                         Get.to(MainPage());
                       } else {
                         Get.snackbar("", "",
