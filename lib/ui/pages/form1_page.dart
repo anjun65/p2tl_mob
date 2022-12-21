@@ -230,31 +230,6 @@ class _Form1PageState extends State<Form1Page> {
                   });
                 }),
           ),
-          GestureDetector(
-            onTap: () async {
-              FilePickerResult result = await FilePicker.platform
-                  .pickFiles(type: FileType.any, allowMultiple: false);
-
-              if (result != null) {
-                uploadFile = i.File(result.files.single.path);
-                name = result.files.first.name;
-              } else {
-                // User canceled the picker
-              }
-            },
-            child: Container(
-                width: 110,
-                height: 110,
-                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: (uploadFile != null)
-                    ? Container(
-                        child: Text(name),
-                      )
-                    : Container(
-                        child: Text("Upload BA"),
-                      )),
-          ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 24),
@@ -303,6 +278,60 @@ class _Form1PageState extends State<Form1Page> {
               color: mainColor,
               child: Text(
                 'Ubah',
+                style: GoogleFonts.poppins(
+                    color: Colors.black, fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 24),
+            height: 45,
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: RaisedButton(
+              onPressed: () {
+                Get.to(FormLangsung(
+                  transaction: WorkModel(
+                    id: widget.transaction.id,
+                  ),
+                  onBackButtonPressed: () {
+                    Get.back();
+                  },
+                ));
+              },
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              color: mainColor,
+              child: Text(
+                'Tambahkan BA Langsung',
+                style: GoogleFonts.poppins(
+                    color: Colors.black, fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 24),
+            height: 45,
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: RaisedButton(
+              onPressed: () {
+                Get.to(FormTidakLangsung(
+                  transaction: WorkModel(
+                    id: widget.transaction.id,
+                  ),
+                  onBackButtonPressed: () {
+                    Get.back();
+                  },
+                ));
+              },
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              color: mainColor,
+              child: Text(
+                'Tambahkan BA Tidak Langsung',
                 style: GoogleFonts.poppins(
                     color: Colors.black, fontWeight: FontWeight.w500),
               ),

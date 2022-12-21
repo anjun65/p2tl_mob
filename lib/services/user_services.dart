@@ -58,12 +58,12 @@ class UserServices {
 
     if (pictureFile != null) {
       ApiReturnValue<String> result = await uploadProfilePicture(pictureFile);
-      if (result.value != null) {
-        value = value.copyWith(
-            picturePath:
-                "http://foodmarket-backend.buildwithangga.id/storage/" +
-                    result.value);
-      }
+      // if (result.value != null) {
+      //   value = value.copyWith(
+      //       picturePath:
+      //           "https://foodmarket-backend.buildwithangga.id/storage/" +
+      //               result.value);
+      // }
     }
 
     return ApiReturnValue(value: value);

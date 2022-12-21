@@ -45,8 +45,8 @@ class _MainPageState extends State<MainPage> {
                 child: MapPage(),
               ),
               Center(
-                  // child: Form1Page(),
-                  ),
+                child: Form1Page(),
+              ),
               Center(
                   // child: ProfilePage(),
                   ),
