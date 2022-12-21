@@ -103,4 +103,34 @@ class WorkModel extends Equatable {
         // ba_pemeriksaan,
         keteranganP2tl,
       ];
+
+  static Future<void> createTables(sql.Database database) async {
+    await database.execute('''
+    CREATE TABLE work_order(
+        id INTEGER NOT NULL,
+        keterangan_p2tl String NOT NULL
+    )
+    ''');
+  }
+
+  static Future<sql.Database> db() async {
+    return sql.openDatabase('work_order.db', version: 1,
+        onCreate: (sql.Database database, int version) async {
+      await createTables(database);
+    });
+  }
+
+  //tambah database
+  static Future<int> tambahWorkOrder(int id, String keterangan_p2tl) async {
+    final db = await WorkModel.db();
+    final data = {"id": id, "keterangan_p2tl": keterangan_p2tl};
+
+    return await db.insert('work_order', data);
+  }
+
+  //ambil data
+  static Future<List<Map<String, dynamic>>> getsqlWorkOrder() async {
+    final db = await WorkModel.db();
+    return db.query('work_order');
+  }
 }

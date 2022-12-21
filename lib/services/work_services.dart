@@ -26,7 +26,7 @@ class WorkServices {
       {http.Client client}) async {
     client ??= http.Client();
 
-    String url = baseURL + 'work-order';
+    String url = baseURL + 'wwork-order';
 
     var response = await client.post(url,
         headers: {
@@ -39,7 +39,14 @@ class WorkServices {
         }));
 
     if (response.statusCode != 200) {
-      return ApiReturnValue(message: 'Please try again');
+      var sqlresponse = await WorkModel.tambahWorkOrder(
+          transaction.id, transaction.keteranganP2tl);
+
+      if (sqlresponse != Null) {
+        return ApiReturnValue(message: 'Tersimpan di Local');
+      } else {
+        return ApiReturnValue(message: 'Please try again');
+      }
     }
 
     var data = jsonDecode(response.body);

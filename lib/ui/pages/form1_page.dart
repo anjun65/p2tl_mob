@@ -254,9 +254,8 @@ class _Form1PageState extends State<Form1Page> {
                 // if (ba != null) {
                 //   print('WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW');
                 // }
+
                 if (keterangan != null) {
-                  Get.to(MainPage());
-                } else {
                   Get.snackbar("", "",
                       backgroundColor: "00D100".toColor(),
                       icon: Icon(MdiIcons.closeCircleOutline,
@@ -268,6 +267,20 @@ class _Form1PageState extends State<Form1Page> {
                       ),
                       messageText: Text(
                         'Data Tersimpan',
+                        style: GoogleFonts.poppins(color: Colors.white),
+                      ));
+                } else {
+                  Get.snackbar("", "",
+                      backgroundColor: "D9435E".toColor(),
+                      icon: Icon(MdiIcons.closeCircleOutline,
+                          color: Colors.white),
+                      titleText: Text(
+                        'Perubahan Tidak Berhasil',
+                        style: GoogleFonts.poppins(
+                            color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
+                      messageText: Text(
+                        'Silahkan Coba Lagi',
                         style: GoogleFonts.poppins(color: Colors.white),
                       ));
                 }

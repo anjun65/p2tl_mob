@@ -25,7 +25,7 @@ class WorkCubit extends Cubit<WorkState> {
 
     if (result.value != null) {
       emit(WorkLoaded((state as WorkLoaded).works + [result.value]));
-      return result.value.keteranganP2tl;
+      return result.value.idPelanggan;
     } else {
       return null;
     }
